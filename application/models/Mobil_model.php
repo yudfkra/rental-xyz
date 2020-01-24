@@ -22,7 +22,7 @@ class Mobil_model extends CI_Model
         if ($where_status) {
             $is_not = $where_status == 'ready' ? 'NOT IN' : 'IN';
 
-            $this->db->where("mobil.id " . $is_not . " (SELECT pesanan.mobil_id FROM pesanan WHERE status = 2)");
+            $this->db->where('mobil.id ' . $is_not . ' (SELECT mobil_id FROM pesanan WHERE pesanan.mobil_id = mobil.id AND status = 2)');
         }
 
         if ($where_like) {
